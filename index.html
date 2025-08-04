@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Untuk Asapa Imut 💌</title>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Rubik', sans-serif;
+      background: linear-gradient(135deg, #f8a5c2, #74b9ff);
+      color: #333;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .heart {
+      position: absolute;
+      width: 60px;
+      height: 60px;
+      background: red;
+      transform: rotate(-45deg);
+      animation: floatUp 12s linear infinite;
+      opacity: 0.3;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: '';
+      position: absolute;
+      width: 60px;
+      height: 60px;
+      background: red;
+      border-radius: 50%;
+    }
+
+    .heart::before { top: -30px; left: 0; }
+    .heart::after { top: 0; left: 30px; }
+
+    @keyframes floatUp {
+      0% { transform: translateY(100vh) rotate(-45deg); }
+      100% { transform: translateY(-120vh) rotate(-45deg); }
+    }
+
+    .card {
+      background: white;
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.15);
+      max-width: 520px;
+      margin: 1rem;
+      animation: fadeIn 2s ease;
+      position: relative;
+      z-index: 10;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      color: #e84393;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+
+    .button {
+      padding: 0.8rem 1.6rem;
+      font-size: 1rem;
+      background: #e84393;
+      color: white;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .button:hover { background: #d63072; }
+
+    .reject-button {
+      padding: 0.8rem 1.6rem;
+      font-size: 1rem;
+      background: #b2bec3;
+      color: #333;
+      border: none;
+      border-radius: 12px;
+      position: absolute;
+      transition: 0.3s;
+      cursor: pointer;
+    }
+
+    .sparkle {
+      position: absolute;
+      pointer-events: none;
+      width: 10px;
+      height: 10px;
+      background: gold;
+      border-radius: 50%;
+      opacity: 0.8;
+      animation: sparkle 1s linear forwards;
+    }
+
+    @keyframes sparkle {
+      0% { transform: scale(1); opacity: 1; }
+      100% { transform: scale(2); opacity: 0; }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+  <!-- Hati-hati beterbangan -->
+  <div class="heart" style="left: 15%; animation-delay: 0s;"></div>
+  <div class="heart" style="left: 35%; animation-delay: 2s;"></div>
+  <div class="heart" style="left: 55%; animation-delay: 4s;"></div>
+  <div class="heart" style="left: 75%; animation-delay: 1s;"></div>
+  <div class="heart" style="left: 85%; animation-delay: 3s;"></div>
+
+  <div class="card">
+    <h1>Hai, Asapa Imut 💖</h1>
+    <p>
+      Aku nulis ini karena setiap kali aku mikirin kamu, aku senyum sendiri. Kamu itu kayak matahari, bikin segalanya jadi lebih hangat dan cerah ☀️
+    </p>
+    <p>
+      Aku suka semua hal tentang kamu — dari cara kamu ketawa, cara kamu ngobrol, sampai cara kamu jadi diri sendiri.
+    </p>
+    <p>
+      Jadi... aku mau nanya nih: Boleh nggak aku jadi seseorang yang selalu ada buat kamu? 🥺
+    </p>
+    <a href="https://wa.me/+628816527987?text=Iya%2C%20aku%20mau!" target="_blank" class="button" onclick="showSparkles(event)">Iya, aku mau!</a>
+    <button id="noBtn" class="reject-button" style="top: 70%; left: 60%;">Nggak, maaf ya 🙈</button>
+  </div>
+
+  <script>
+    const noBtn = document.getElementById('noBtn');
+    noBtn.addEventListener('mouseover', () => {
+      const card = document.querySelector('.card');
+      const x = Math.random() * (card.offsetWidth - 120);
+      const y = Math.random() * (card.offsetHeight - 40);
+      noBtn.style.left = `${x}px`;
+      noBtn.style.top = `${y}px`;
+    });
+
+    function showSparkles(e) {
+      for (let i = 0; i < 30; i++) {
+        const sparkle = document.createElement('div');
+        sparkle.className = 'sparkle';
+        sparkle.style.left = `${e.clientX + Math.random() * 40 - 20}px`;
+        sparkle.style.top = `${e.clientY + Math.random() * 40 - 20}px`;
+        document.body.appendChild(sparkle);
+        setTimeout(() => sparkle.remove(), 1000);
+      }
+    }
+  </script>
+</body>
+</html>

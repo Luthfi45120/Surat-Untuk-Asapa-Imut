@@ -15,6 +15,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      flex-direction: column;
       min-height: 100vh;
       text-align: center;
       overflow: hidden;
@@ -90,8 +91,8 @@
     .reject-button {
       padding: 0.8rem 1.6rem;
       font-size: 1rem;
-      background: #b2bec3;
-      color: #333;
+      background: #ff0000;
+      color: #fff;
       border: none;
       border-radius: 12px;
       position: absolute;
@@ -111,6 +112,15 @@
       animation: sparkle 1s linear forwards;
     }
 
+    .from {
+      margin-top: 2rem;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #fff;
+      opacity: 1;
+      transition: opacity 1s ease;
+    }
+
     @keyframes sparkle {
       0% { transform: scale(1); opacity: 1; }
       100% { transform: scale(2); opacity: 0; }
@@ -122,8 +132,7 @@
     }
   </style>
 </head>
-<body ontouchstart=""> <!-- trigger touch compatibility -->
-  <!-- Hati-hati beterbangan -->
+<body ontouchstart="">
   <div class="heart" style="left: 15%; animation-delay: 0s;"></div>
   <div class="heart" style="left: 35%; animation-delay: 2s;"></div>
   <div class="heart" style="left: 55%; animation-delay: 4s;"></div>
@@ -145,9 +154,12 @@
     <button id="noBtn" class="reject-button" style="top: 70%; left: 60%;">Nggak, maaf ya 🙈</button>
   </div>
 
+  <div class="from" id="senderName">Dari: Luthfi45120</div>
+
   <script>
     const noBtn = document.getElementById('noBtn');
     const card = document.querySelector('.card');
+    const sender = document.getElementById('senderName');
 
     function moveButton(e) {
       const touch = e.touches ? e.touches[0] : e;
@@ -170,6 +182,17 @@
         setTimeout(() => sparkle.remove(), 1000);
       }
     }
+
+    const names = ['Luthfi45120', 'Lutcyfus'];
+    let index = 0;
+    setInterval(() => {
+      sender.style.opacity = 0;
+      setTimeout(() => {
+        sender.textContent = 'Dari: ' + names[index];
+        sender.style.opacity = 1;
+        index = (index + 1) % names.length;
+      }, 1000);
+    }, 4000);
   </script>
 </body>
 </html>

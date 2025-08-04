@@ -97,6 +97,7 @@
       position: absolute;
       transition: 0.3s;
       cursor: pointer;
+      touch-action: none;
     }
 
     .sparkle {
@@ -121,7 +122,7 @@
     }
   </style>
 </head>
-<body>
+<body ontouchstart=""> <!-- trigger touch compatibility -->
   <!-- Hati-hati beterbangan -->
   <div class="heart" style="left: 15%; animation-delay: 0s;"></div>
   <div class="heart" style="left: 35%; animation-delay: 2s;"></div>
@@ -140,19 +141,24 @@
     <p>
       Jadi... aku mau nanya nih: Boleh nggak aku jadi seseorang yang selalu ada buat kamu? 🥺
     </p>
-    <a href="https://wa.me/+628816527987?text=Iya%2C%20aku%20mau!" target="_blank" class="button" onclick="showSparkles(event)">Iya, aku mau!</a>
+    <a href="https://wa.me/+628816527987?text=Iya%2C%20aku%20mau%20jadi%20pendamping%20hidupmu%20sayank!" target="_blank" class="button" onclick="showSparkles(event)">Iya, aku mau!</a>
     <button id="noBtn" class="reject-button" style="top: 70%; left: 60%;">Nggak, maaf ya 🙈</button>
   </div>
 
   <script>
     const noBtn = document.getElementById('noBtn');
-    noBtn.addEventListener('mouseover', () => {
-      const card = document.querySelector('.card');
+    const card = document.querySelector('.card');
+
+    function moveButton(e) {
+      const touch = e.touches ? e.touches[0] : e;
       const x = Math.random() * (card.offsetWidth - 120);
       const y = Math.random() * (card.offsetHeight - 40);
       noBtn.style.left = `${x}px`;
       noBtn.style.top = `${y}px`;
-    });
+    }
+
+    noBtn.addEventListener('mouseover', moveButton);
+    noBtn.addEventListener('touchstart', moveButton);
 
     function showSparkles(e) {
       for (let i = 0; i < 30; i++) {

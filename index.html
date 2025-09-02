@@ -46,14 +46,14 @@
       margin: 16px 0;
       line-height: 1.7;
       font-size: 1.05em;
-      font-weight: 400;
+      font-weight: bold;
       font-family: "Poppins", sans-serif;
     }
 
     .cta {
       margin-top: 20px;
       position: relative;
-      height: 60px;
+      height: 80px;
     }
 
     button {
@@ -65,12 +65,15 @@
       cursor: pointer;
       transition: all 0.3s ease;
       font-family: "Poppins", sans-serif;
+      font-weight: bold;
     }
 
     .yes {
       background-color: #ff4d6d;
       color: white;
       font-weight: 600;
+      position: relative;
+      z-index: 2;
     }
 
     .yes:hover {
@@ -83,7 +86,8 @@
       color: #333;
       position: absolute;
       top: 0;
-      right: 0;
+      left: 0;
+      z-index: 1;
     }
 
     .signature {
@@ -94,6 +98,12 @@
       opacity: 0;
       animation: fadeIn 2s ease forwards;
       animation-delay: 1.2s;
+      text-shadow: 0 2px 8px #fff, 0 1px 0 #d6336c;
+      background: rgba(255,255,255,0.6);
+      padding: 6px 18px;
+      border-radius: 12px;
+      font-weight: 600;
+      border: 1px solid #ffd6e0;
     }
 
     @keyframes fadeIn {
@@ -125,7 +135,7 @@
 </head>
 <body>
   <div class="card">
-    <h1>Sorry Asapa Imut 💖</h1>
+    <h1><b>Sorry Asapa Imut 💖</b></h1>
     <p class="msg">
       Maafin aku ya kalau kemarin aku bikin kamu merasa nggak dihargai.  
       Aku salah udah bilang kamu kurang effort, padahal aku tahu kamu punya cara sendiri buat nunjukkin sayang.  
@@ -133,10 +143,10 @@
       Aku sayang banget sama kamu 💕
     </p>
     <div class="cta">
-      <button class="yes" onclick="window.location.href='https://wa.link/xx6jzz'">💞 Maafin</button>
-      <button class="no" id="noBtn">💔 Nolak</button>
+      <button class="yes" onclick="window.location.href='https://wa.link/xx6jzz'">💞 <b>Maafin</b></button>
+      <button class="no" id="noBtn">💔 <b>Nolak</b></button>
     </div>
-    <div class="signature">From your fiancé</div>
+    <div class="signature"><b>From your fiancé</b></div>
   </div>
 
   <script>
@@ -147,13 +157,17 @@
     noBtn.addEventListener("mouseover", () => {
       const ctaRect = cta.getBoundingClientRect();
       const btnRect = noBtn.getBoundingClientRect();
+
       const maxX = ctaRect.width - btnRect.width;
       const maxY = ctaRect.height - btnRect.height;
 
       const x = Math.random() * maxX;
       const y = Math.random() * maxY;
 
-      noBtn.style.transform = `translate(${x}px, ${y}px)`;
+      // pindahin beneran pakai absolute biar area klik ikut pindah
+      noBtn.style.position = "absolute";
+      noBtn.style.left = `${x}px`;
+      noBtn.style.top = `${y}px`;
     });
 
     // bikin love terbang terus
@@ -173,13 +187,3 @@
   </script>
 </body>
 </html>
-<style>
-    .signature {
-        text-shadow: 0 2px 8px #fff, 0 1px 0 #d6336c;
-        background: rgba(255,255,255,0.6);
-        padding: 6px 18px;
-        border-radius: 12px;
-        font-weight: 600;
-        border: 1px solid #ffd6e0;
-    }
-</style>

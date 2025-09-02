@@ -1,15 +1,17 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Permintaan Maaf untuk Asapa imut 💖</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sorry Asapa Imut</title>
+
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;600&family=Great+Vibes&display=swap" rel="stylesheet">
+
   <style>
     body {
       margin: 0;
-      font-family: "Dancing Script", cursive;
+      font-family: "Poppins", sans-serif;
       background: linear-gradient(135deg, #ff9eb5, #ffdde1);
       color: #4a2c2c;
       display: flex;
@@ -17,179 +19,157 @@
       align-items: center;
       height: 100vh;
       overflow: hidden;
+      padding: 12px;
     }
+
     .card {
-      max-width: 600px;
-      width: 90%;
-      background: rgba(255, 255, 255, 0.92);
+      background: #fff0f5;
       padding: 24px;
       border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      max-width: 600px;
+      width: 90%;
       text-align: center;
-      box-shadow: 0 10px 30px rgba(255, 0, 100, 0.3);
       position: relative;
-      z-index: 10;
+      overflow: hidden;
     }
-    h1 { 
-      margin-top: 0; 
+
+    h1 {
+      margin-top: 0;
       color: #d6336c;
-      font-weight: 600; /* Bold */
-      font-size: 2em;
+      font-family: "Pacifico", cursive;
+      font-weight: 400;
+      font-size: 2.2em;
     }
+
     .msg {
       margin: 16px 0;
       line-height: 1.7;
-      font-size: 1.1em;
-      font-weight: 400; /* Normal */
+      font-size: 1.05em;
+      font-weight: 400;
+      font-family: "Poppins", sans-serif;
     }
+
+    .cta {
+      margin-top: 20px;
+      position: relative;
+      height: 60px;
+    }
+
+    button {
+      padding: 12px 22px;
+      margin: 8px;
+      border: none;
+      border-radius: 12px;
+      font-size: 1em;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-family: "Poppins", sans-serif;
+    }
+
+    .yes {
+      background-color: #ff4d6d;
+      color: white;
+      font-weight: 600;
+    }
+
+    .yes:hover {
+      background-color: #ff1a4d;
+      transform: scale(1.05);
+    }
+
+    .no {
+      background-color: #ccc;
+      color: #333;
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+
     .signature {
       margin-top: 20px;
-      font-size: 1em;
-      font-style: italic;
+      font-size: 1.1em;
+      font-family: "Great Vibes", cursive;
       color: #8b5e5e;
       opacity: 0;
       animation: fadeIn 2s ease forwards;
       animation-delay: 1.2s;
     }
+
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to   { opacity: 0.85; transform: translateY(0); }
-    }
-    .cta {
-      position: relative;
-      min-height: 120px;
-      margin-top: 20px;
-    }
-    button {
-      border: none;
-      padding: 14px 22px;
-      border-radius: 14px;
-      cursor: pointer;
-      font-weight: 600;
-      font-size: 15px;
-      margin: 8px;
-      transition: all 0.4s ease;
-      font-family: "Poppins", sans-serif;
-    }
-    #yesBtn {
-      background: linear-gradient(180deg, #ff5fa2, #ff2d55);
-      color: #fff;
-      box-shadow: 0 6px 15px rgba(255, 47, 104, 0.4);
-      position: relative;
-      z-index: 20;
-    }
-    #yesBtn:hover {
-      transform: scale(1.1);
-      box-shadow: 0 8px 18px rgba(255, 47, 104, 0.6);
-    }
-    #noBtn {
-      background: linear-gradient(180deg, #ffb3c6, #ff758f);
-      color: #fff;
-      position: absolute;
-      right: 10px;   /* start di pojok kanan */
-      top: 10px;     /* start di pojok atas */
-      box-shadow: 0 6px 15px rgba(255, 118, 140, 0.4);
-      z-index: 20;
+      to { opacity: 1; }
     }
 
-    /* Efek hati kecil melayang (latar belakang) */
-    .floating-heart {
-      position: fixed;
-      bottom: -50px;
-      font-size: 18px;
-      animation: floatBg 6s linear infinite;
-      color: #ff2d55;
-      opacity: 0.7;
-      z-index: 1;
-    }
-    @keyframes floatBg {
-      0% { transform: translateY(0) scale(1); opacity: 0.8; }
-      100% { transform: translateY(-110vh) scale(1.8); opacity: 0; }
+    /* Love floating effect */
+    .love {
+      position: absolute;
+      bottom: -20px;
+      font-size: 24px;
+      color: #ff4d6d;
+      animation: floatUp 5s linear infinite;
+      opacity: 0.8;
     }
 
-    /* Efek hati ketika klik tombol Maafin */
-    .heart {
-      position: absolute;
-      font-size: 22px;
-      animation: floatUp 2s ease-in forwards;
-      pointer-events: none;
-      z-index: 50;
-    }
     @keyframes floatUp {
-      0% { transform: translateY(0) scale(1); opacity: 1; }
-      100% { transform: translateY(-120px) scale(1.6); opacity: 0; }
+      0% { transform: translateY(0) scale(1); opacity: 0.8; }
+      50% { opacity: 1; }
+      100% { transform: translateY(-600px) scale(1.5); opacity: 0; }
+    }
+
+    @media (max-width: 480px) {
+      .msg { font-size: 1em; }
+      h1 { font-size: 1.6em; }
+      .card { padding: 18px; }
     }
   </style>
 </head>
 <body>
   <div class="card">
-    <h1>Untuk “Asapa imut” 💖</h1>
-    <div class="msg">
-      <p>Asapa imutku, maafin aku ya kalau kemarin aku bikin kamu merasa nggak dihargai.
-      Aku salah sudah bilang kamu kurang effort, padahal setiap orang punya caranya sendiri
-      buat nunjukkin sayang.</p>
-      <p>Aku janji bakal lebih ngerti, lebih sabar, dan lebih jagain hati kamu.  
-      Kamu calon bahagiaku yang paling imut 💍</p>
+    <h1>Sorry Asapa Imut 💖</h1>
+    <p class="msg">
+      Maafin aku ya kalau kemarin aku bikin kamu merasa nggak dihargai.  
+      Aku salah udah bilang kamu kurang effort, padahal aku tahu kamu punya cara sendiri buat nunjukkin sayang.  
+      Aku janji bakal lebih ngerti, lebih sabar, dan lebih jagain hati kamu.  
+      Aku sayang banget sama kamu 💕
+    </p>
+    <div class="cta">
+      <button class="yes" onclick="window.location.href='https://wa.link/xx6jzz'">💞 Maafin</button>
+      <button class="no" id="noBtn">💔 Nolak</button>
     </div>
-    <div class="cta" id="cta">
-      <button id="yesBtn">💞 Maafin</button>
-      <button id="noBtn">💔 Nolak</button>
-    </div>
-    <div class="signature">From your fiancé 💌</div>
+    <div class="signature">From your fiancé</div>
   </div>
 
   <script>
-    const noBtn = document.getElementById('noBtn');
-    const yesBtn = document.getElementById('yesBtn');
-    const cta = document.getElementById('cta');
+    const noBtn = document.getElementById("noBtn");
+    const cta = document.querySelector(".cta");
 
-    // Tombol NO kabur
-    function moveNoButton(ev){
-      const bounds = cta.getBoundingClientRect();
-      const btn = noBtn.getBoundingClientRect();
-      const maxLeft = bounds.width - btn.width;
-      const maxTop  = bounds.height - btn.height;
-      const rand = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
+    // tombol nolak kabur
+    noBtn.addEventListener("mouseover", () => {
+      const ctaRect = cta.getBoundingClientRect();
+      const btnRect = noBtn.getBoundingClientRect();
+      const maxX = ctaRect.width - btnRect.width;
+      const maxY = ctaRect.height - btnRect.height;
 
-      let left = rand(0, maxLeft);
-      let top  = rand(0, maxTop);
+      const x = Math.random() * maxX;
+      const y = Math.random() * maxY;
 
-      noBtn.style.transition = "transform 0.5s ease";
-      noBtn.style.transform = `translate(${left - (btn.left - bounds.left)}px, ${top - (btn.top - bounds.top)}px) rotate(${rand(-20,20)}deg) scale(${rand(85,110)/100})`;
-    }
-
-    noBtn.addEventListener('mouseenter', moveNoButton);
-    noBtn.addEventListener('click', (e) => { e.preventDefault(); moveNoButton(e); });
-    noBtn.addEventListener('touchstart', (e) => { e.preventDefault(); moveNoButton(e.touches[0]); }, {passive:false});
-
-    // Klik maafin -> ke WhatsApp + animasi hati
-    yesBtn.addEventListener('click', () => {
-      const hearts = ["❤️","💖","💕","💘","💓"];
-      for(let i=0; i<8; i++){
-        const heart = document.createElement("div");
-        heart.className = "heart";
-        heart.textContent = hearts[Math.floor(Math.random()*hearts.length)];
-        heart.style.left = (yesBtn.offsetLeft + yesBtn.offsetWidth/2) + (Math.random()*60-30) + "px";
-        heart.style.top = (yesBtn.offsetTop - 20) + "px";
-        cta.appendChild(heart);
-        setTimeout(()=> heart.remove(),2000);
-      }
-      setTimeout(()=> {
-        window.location.href = "https://wa.link/xx6jzz";
-      }, 1200);
+      noBtn.style.transform = `translate(${x}px, ${y}px)`;
     });
 
-    // Efek hati melayang background
-    function spawnFloatingHearts(){
-      const heart = document.createElement("div");
-      heart.className = "floating-heart";
-      heart.textContent = "❤";
-      heart.style.left = Math.random() * window.innerWidth + "px";
-      heart.style.fontSize = (Math.random()*20+15) + "px";
-      heart.style.animationDuration = (Math.random()*3+4) + "s";
-      document.body.appendChild(heart);
-      setTimeout(()=>heart.remove(),6000);
+    // bikin love terbang terus
+    function createLove() {
+      const love = document.createElement("div");
+      love.classList.add("love");
+      love.innerHTML = "❤️";
+      love.style.left = Math.random() * window.innerWidth + "px";
+      love.style.fontSize = Math.random() * 20 + 20 + "px";
+      document.body.appendChild(love);
+
+      setTimeout(() => {
+        love.remove();
+      }, 5000);
     }
-    setInterval(spawnFloatingHearts, 600);
+    setInterval(createLove, 700);
   </script>
 </body>
 </html>
